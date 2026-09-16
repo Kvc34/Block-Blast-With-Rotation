@@ -27,9 +27,9 @@ The goal is a game that just works — no `node_modules`, no build tools, no clu
 5. **Restarting:** When no valid moves remain, press the Restart (↻) button in the top right to start a new game.
 
 ## 📥 Setup & How to Run
-1. Download the `index.html` file or download the ZIP from this repository.
+1. Download the `Block_Blast_Game_With_Rotation_Kvc.html` file or download the ZIP from this repository.
 2. Extract the downloaded folder on your device.
-3. Double-click `index.html` to open and play directly in any web browser.
+3. Double-click `Block_Blast_Game_With_Rotation_Kvc.html` to open and play directly in any web browser.
 
 ## 📄 License & Attribution
 This project is licensed under the **MIT License**.
