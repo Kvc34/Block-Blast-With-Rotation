@@ -2,6 +2,8 @@
 
 A modern, sleek, and feature-rich Block Blast puzzle game built with HTML5, Tailwind CSS, and Vanilla JavaScript. Featuring piece rotation functionality, modern dark glassmorphism UI, custom Web Audio synthesis sound effects, and 3D cushion block aesthetics.
 
+<img width="1280" height="640" alt="index" src="https://github.com/user-attachments/assets/3ec354a3-f4c0-441a-b818-4a935f45ae29" />
+
 ## 📖 Overview
 **Block Blast With Rotation Block** is a lightweight, single-file browser puzzle game. Rotate blocks freely using the 'R' key or touch inputs, fill rows/columns to clear lines, and chase high scores with dynamic combo sound synthesis.
 
@@ -9,11 +11,16 @@ The goal is a game that just works — no `node_modules`, no build tools, no clu
 
 ## ✨ Highlights
 * **Piece Rotation System:** Rotate any block freely using the 'R' key or tap directly on mobile.
+<img width="281" height="449" alt="Rotaiton" src="https://github.com/user-attachments/assets/6b662811-d0ad-434d-98cf-c0e50d0400d8" />
+
 * **Modern Dark UI:** Clean dark theme with smooth glassmorphism panels and responsive layout.
 * **3D Cushion Bevel Blocks:** Styled 3D blocks matching classic puzzle game visuals.
-* **Interactive Line-Clear Glow Preview:** Live visual feedback glowing on both the grid and held blocks when line completion is detected.
+* **Interactive Line-Clear Glow Preview:** Live visual feedback glowing on both the grid and held blocks when line completion is detected
+<img width="278" height="446" alt="index bomb" src="https://github.com/user-attachments/assets/15da9822-12c5-497f-aa23-66a4375a5f6c" />
+
 * **Custom Web Audio Synthesizer:** Pure JS procedural audio synth for rotations, placements, and combo clears.
 * **Smart No-Moves Indicator:** Automatically detects when no valid placement exists across all piece rotations and alerts you with a pulsating red button.
+<img width="281" height="449" alt="No Space" src="https://github.com/user-attachments/assets/d93a134a-f8e9-4e83-a8ea-7a2534bf2eff" />
 
 ## 🧾 Requirements
 * Any modern web browser (Chrome, Firefox, Edge, Safari)
