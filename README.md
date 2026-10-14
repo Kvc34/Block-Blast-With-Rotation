@@ -10,7 +10,7 @@ A modern, sleek, and feature-rich Block Blast puzzle game built with HTML5, Tail
 The goal is a game that just works — no `node_modules`, no build tools, no clutter.
 
 ## ✨ Highlights
-* **Piece Rotation System:** Rotate any block freely using the 'R' key or tap directly on mobile.
+* **Piece Rotation System:** Rotate any block freely using the 'R' key, Right-Click or tap directly on mobile.
 <img width="281" height="449" alt="Rotaiton" src="https://github.com/user-attachments/assets/6b662811-d0ad-434d-98cf-c0e50d0400d8" />
 
 * **Modern Dark UI:** Clean dark theme with smooth glassmorphism panels and responsive layout.
