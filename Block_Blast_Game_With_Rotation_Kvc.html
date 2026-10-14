@@ -228,7 +228,7 @@
             </div>
 
             <div class="flex items-center space-x-1.5 md:space-x-2">
-                <div class="h-10 px-2.5 rounded-md modern-card flex items-center justify-center text-slate-400 text-xs font-semibold space-x-1.5" title="Press R to rotate">
+                <div class="h-10 px-2.5 rounded-md modern-card flex items-center justify-center text-slate-400 text-xs font-semibold space-x-1.5" title="Press R or right-click to rotate">
                     <span class="inline-flex items-center justify-center w-4 h-4 rounded bg-slate-800 border border-slate-700 text-white font-mono font-bold text-[10px]">R</span>
                     <span>Rotate</span>
                 </div>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="flex items-start space-x-3 modern-card p-3">
                     <span class="bg-white text-slate-950 font-bold rounded-md w-5 h-5 flex items-center justify-center shrink-0 text-[10px]">2</span>
-                    <p class="leading-relaxed"><strong class="text-white">Rotation:</strong> Press <span class="inline-flex items-center justify-center w-4 h-4 rounded bg-slate-800 border border-slate-700 text-white font-mono font-bold text-[10px] align-middle mx-0.5">R</span> key while dragging or tap a block in the tray!</p>
+                    <p class="leading-relaxed"><strong class="text-white">Rotation:</strong> Press <span class="inline-flex items-center justify-center w-4 h-4 rounded bg-slate-800 border border-slate-700 text-white font-mono font-bold text-[10px] align-middle mx-0.5">R</span> key, <strong class="text-white">right-click</strong>, or tap a block in the tray!</p>
                 </div>
                 <div class="flex items-start space-x-3 modern-card p-3">
                     <span class="bg-white text-slate-950 font-bold rounded-md w-5 h-5 flex items-center justify-center shrink-0 text-[10px]">3</span>
@@ -647,6 +647,10 @@
                 slot.appendChild(pieceContainer);
 
                 slot.addEventListener('pointerdown', (e) => startDrag(e, idx));
+                slot.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    rotatePiece(idx);
+                });
 
                 trayContainer.appendChild(slot);
             });
@@ -688,7 +692,52 @@
             }
         });
 
+        // Sağ tık menüsünü (Yeniden yükle, İncele vb.) tamamen engelle
+        // ve sürüklerken / tray'de sağ tık ile döndür
+        let lastRightClickRotate = 0;
+        function handleRightClickRotate(e) {
+            if (!activeDrag) return;
+            const now = Date.now();
+            if (now - lastRightClickRotate < 80) return; // çift tetiklemeyi önle
+            lastRightClickRotate = now;
+            rotatePiece(activeDrag.slotIdx);
+        }
+
+        // Tüm oyun alanında tarayıcı context menüsünü kapat
+        window.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (activeDrag) {
+                handleRightClickRotate(e);
+            }
+        }, true);
+
+        // Capture phase: pointer capture aktif olsa bile sağ tıkı yakalar
+        window.addEventListener('pointerdown', (e) => {
+            if (e.button === 2) {
+                e.preventDefault();
+                if (activeDrag) {
+                    handleRightClickRotate(e);
+                }
+            }
+        }, true);
+
+        window.addEventListener('auxclick', (e) => {
+            if (e.button === 2) {
+                e.preventDefault();
+                if (activeDrag) {
+                    handleRightClickRotate(e);
+                }
+            }
+        });
+
         function startDrag(e, slotIdx) {
+            // Sağ tık (button 2) ile sürükleme başlatma — contextmenu ile çevrilecek
+            if (e.button === 2) {
+                e.preventDefault();
+                return;
+            }
+
             const pieceObj = currentTrayPieces[slotIdx];
             if (!pieceObj) return;
 
